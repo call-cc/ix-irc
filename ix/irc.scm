@@ -175,7 +175,7 @@
          (handle-line irc raw-line)))))
 
 (define-method (handle-line (irc <irc>) line)
-  (format #t line)
+  (display line)
   (newline))
 
 (define-method (irc-pong (irc <irc>) message params)
