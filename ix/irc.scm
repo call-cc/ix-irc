@@ -201,8 +201,7 @@
      (let ((socket (irc-socket irc)))
        (if (pair? channel)
            (format socket "JOIN ~a ~a~a" (car channel) (cdr channel) *irc-eol*)
-           (format socket "JOIN ~a~a" channel *irc-eol*)))
-     (format #t "Joining ~a\n" channel))
+           (format socket "JOIN ~a~a" channel *irc-eol*))))
    (irc-channels irc))
   (let ((password (irc-nick-password irc))
         (cfg-nick (irc-nickname irc))
@@ -220,7 +219,6 @@
                    (number->string number))))
 
 (define-method (irc-nick-taken (irc <irc>) message params)
-  (format #t "Nickname '~a' is taken\n" (irc-nickname irc))
   (let ((new-nick (get-random-nick)))
     (<- (actor-id irc) 'irc-nick new-nick)))
 
@@ -229,7 +227,6 @@
           "PRIVMSG ~a :~a~a" to text *irc-eol*))
 
 (define-method (irc-nick (irc <irc>) nick)
-  (format #t "Trying to acquire nick ~a\n" nick)
   (slot-set! irc 'username nick)
   (format (irc-socket irc)
           "NICK ~a~a" nick *irc-eol*))
