@@ -22,9 +22,15 @@
             is-target-channel?
             is-target-user?
 
-            irc-privmsg
-            irc-motd-end
-            irc-nick-taken
+            event:ping
+            event:pong
+            event:join
+            event:part
+            event:privmsg
+            event:motd
+            event:motd-start
+            event:motd-end
+            event:nick-taken
             irc-nick
             irc-msg))
 
@@ -64,15 +70,15 @@
                          (*init* irc-init)
                          (*cleanup* irc-cleanup)
                          (handle-line handle-line)
-                         (irc-ping irc-ping)
-                         (irc-pong irc-pong)
-                         (irc-join irc-join)
-                         (irc-part irc-part)
-                         (irc-privmsg irc-privmsg)
-                         (irc-motd irc-motd)
-                         (irc-motd-start irc-motd-start)
-                         (irc-motd-end irc-motd-end)
-                         (irc-nick-taken irc-nick-taken)
+                         (event:ping event:ping)
+                         (event:pong event:pong)
+                         (event:join event:join)
+                         (event:part event:part)
+                         (event:privmsg event:privmsg)
+                         (event:motd event:motd)
+                         (event:motd-start event:motd-start)
+                         (event:motd-end event:motd-end)
+                         (event:nick-taken event:nick-taken)
                          (irc-nick irc-nick)
                          (main-loop irc-main-loop))))
 
@@ -156,14 +162,14 @@
 (define (is-target-user? target)
   (not (is-target-channel? target)))
 
-(define *irc-functions* '(("372" . irc-motd)
-                          ("375" . irc-motd-start)
-                          ("376" . irc-motd-end)
-                          ("433" . irc-nick-taken)
-                          ("PING" . irc-pong)
-                          ("JOIN" . irc-join)
-                          ("PART" . irc-part)
-                          ("PRIVMSG" . irc-privmsg)))
+(define *irc-functions* '(("372" . event:motd)
+                          ("375" . event:motd-start)
+                          ("376" . event:motd-end)
+                          ("433" . event:nick-taken)
+                          ("PING" . event:pong)
+                          ("JOIN" . event:join)
+                          ("PART" . event:part)
+                          ("PRIVMSG" . event:privmsg)))
 
 (define-method (dispatch-raw-line (irc <irc>) raw-line)
   "Dispatch a raw line of input"
@@ -178,24 +184,24 @@
   (display line)
   (newline))
 
-(define-method (irc-pong (irc <irc>) message params)
+(define-method (event:pong (irc <irc>) message params)
   (display (string-append "PONG" *irc-eol*)
            (irc-socket irc))
-  (<- (actor-id irc) 'irc-ping params))
+  (<- (actor-id irc) 'event:ping params))
 
-(define-method (irc-ping (irc <irc>) message params))
+(define-method (event:ping (irc <irc>) message params))
 
-(define-method (irc-join (irc <irc>) message params))
+(define-method (event:join (irc <irc>) message params))
 
-(define-method (irc-part (irc <irc>) message params))
+(define-method (event:part (irc <irc>) message params))
 
-(define-method (irc-privmsg (irc <irc>) message params))
+(define-method (event:privmsg (irc <irc>) message params))
 
-(define-method (irc-motd (irc <irc>) message params))
+(define-method (event:motd (irc <irc>) message params))
 
-(define-method (irc-motd-start (irc <irc>) message params))
+(define-method (event:motd-start (irc <irc>) message params))
 
-(define-method (irc-motd-end (irc <irc>) message params)
+(define-method (event:motd-end (irc <irc>) message params)
   (for-each
    (lambda (channel)
      (let ((socket (irc-socket irc)))
@@ -218,9 +224,13 @@
     (string-append "ixirc"
                    (number->string number))))
 
-(define-method (irc-nick-taken (irc <irc>) message params)
+(define-method (event:nick-taken (irc <irc>) message params)
   (let ((new-nick (get-random-nick)))
     (<- (actor-id irc) 'irc-nick new-nick)))
+
+(define-method (event:join (irc <irc>) message params))
+
+(define-method (event:part (irc <irc>) message params))
 
 (define-method (irc-msg (irc <irc>) to text)
   (format (irc-socket irc)
