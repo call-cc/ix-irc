@@ -214,13 +214,15 @@
 
 (set! *random-state* (random-state-from-platform))
 
+(define (get-random-nick)
+  (let ((number (+ 1000 (random 9000))))
+    (string-append "ixirc"
+                   (number->string number))))
+
 (define-method (irc-nick-taken (irc <irc>) message params)
   (format #t "Nickname '~a' is taken\n" (irc-nickname irc))
-  (let* ((number (+ 1000 (random 9000)))
-         (new-nick (string-append "ixirc"
-                                  (number->string number))))
-    (<- (actor-id irc) 'irc-nick
-        new-nick)))
+  (let ((new-nick (get-random-nick)))
+    (<- (actor-id irc) 'irc-nick new-nick)))
 
 (define-method (irc-msg (irc <irc>) to text)
   (format (irc-socket irc)
