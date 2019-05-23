@@ -1,0 +1,7 @@
+ - clean up irc.scm
+ - error handling
+ - reconnect on disconnect
+ - clean up unit tests
+ - add more unit tests
+ - handle more IRC events
+ - remove prints to STDOUT (this is a library after all!)

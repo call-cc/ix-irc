@@ -1,0 +1,99 @@
+:tepper.freenode.net NOTICE * :*** Looking up your hostname...
+:tepper.freenode.net NOTICE * :*** Checking Ident
+:tepper.freenode.net NOTICE * :*** Found your hostname
+nick z00d
+user z00d 0 z00d z00d
+:tepper.freenode.net NOTICE * :*** No Ident response
+:tepper.freenode.net 001 z00d :Welcome to the freenode Internet Relay Chat Network z00d
+:tepper.freenode.net 002 z00d :Your host is tepper.freenode.net[192.186.157.43/6667], running version ircd-seven-1.1.7
+:tepper.freenode.net 003 z00d :This server was created Wed Oct 10 2018 at 19:35:28 UTC
+:tepper.freenode.net 004 z00d tepper.freenode.net ircd-seven-1.1.7 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+:tepper.freenode.net 005 z00d CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode STATUSMSG=@+ CALLERID=g CASEMAPPING=rfc1459 :are supported by this server
+:tepper.freenode.net 005 z00d CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 DEAF=D FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: EXTBAN=$,ajrxz CLIENTVER=3.0 ETRACE KNOCK WHOX :are supported by this server
+:tepper.freenode.net 005 z00d CPRIVMSG CNOTICE SAFELIST ELIST=CTU :are supported by this server
+:tepper.freenode.net 251 z00d :There are 100 users and 84319 invisible on 32 servers
+:tepper.freenode.net 252 z00d 33 :IRC Operators online
+:tepper.freenode.net 253 z00d 23 :unknown connection(s)
+:tepper.freenode.net 254 z00d 53013 :channels formed
+:tepper.freenode.net 255 z00d :I have 4741 clients and 1 servers
+:tepper.freenode.net 265 z00d 4741 5185 :Current local users 4741, max 5185
+:tepper.freenode.net 266 z00d 84419 94264 :Current global users 84419, max 94264
+:tepper.freenode.net 250 z00d :Highest connection count: 5186 (5185 clients) (1296315 connections received)
+:tepper.freenode.net 375 z00d :- tepper.freenode.net Message of the Day -
+:tepper.freenode.net 372 z00d :- Welcome to tepper.freenode.net in Buffalo, NY.
+:tepper.freenode.net 372 z00d :- Thanks to http://www.servermania.com/ for sponsoring
+:tepper.freenode.net 372 z00d :- this server!
+:tepper.freenode.net 372 z00d :-
+:tepper.freenode.net 372 z00d :-
+:tepper.freenode.net 372 z00d :- TEPPER, SHERI S. (1929-), an American science fiction,
+:tepper.freenode.net 372 z00d :- horror and mystery novel author, behind more than thirty
+:tepper.freenode.net 372 z00d :- books, many themed unapologetically eco-feminist. Her
+:tepper.freenode.net 372 z00d :- writing career started composing children's stories, but
+:tepper.freenode.net 372 z00d :- moved to adult fiction in 1982. With the 1991 novel
+:tepper.freenode.net 372 z00d :- 'Beauty' she won the Locus award for Best Fantasy Novel.
+:tepper.freenode.net 372 z00d :- Her other well-known works include 'Grass' (1989, nominated
+:tepper.freenode.net 372 z00d :- for Hugo and Locus Awards in 1990) and 'Gate to Women's
+:tepper.freenode.net 372 z00d :- Country' (1988).
+:tepper.freenode.net 372 z00d :-
+:tepper.freenode.net 372 z00d :- Welcome to freenode - supporting the free and open source
+:tepper.freenode.net 372 z00d :- software communities since 1998.
+:tepper.freenode.net 372 z00d :-
+:tepper.freenode.net 372 z00d :- By connecting to freenode you indicate that you have read and
+:tepper.freenode.net 372 z00d :- accept our policies and guidelines as set out on https://freenode.net
+:tepper.freenode.net 372 z00d :-
+:tepper.freenode.net 372 z00d :- In the event that you observe behaviour that contravenes our policies,
+:tepper.freenode.net 372 z00d :- please notify a volunteer staff member via private message, or send us an
+:tepper.freenode.net 372 z00d :- e-mail to complaints@freenode.net -- we will do our best to address the
+:tepper.freenode.net 372 z00d :- situation within a reasonable period of time, and we may request further
+:tepper.freenode.net 372 z00d :- information or, as appropriate, involve other parties such as channel operators
+:tepper.freenode.net 372 z00d :- Group Contacts representing an on-topic group.
+:tepper.freenode.net 372 z00d :-
+:tepper.freenode.net 372 z00d :- freenode runs an open proxy scanner.
+:tepper.freenode.net 372 z00d :-
+:tepper.freenode.net 372 z00d :- If you are looking for assistance, you may be able to find a list of
+:tepper.freenode.net 372 z00d :- volunteer staff on '/stats p' (shows only on-call staff) or by joining
+:tepper.freenode.net 372 z00d :- #freenode and using the '/who freenode/staff/*' command. You may message
+:tepper.freenode.net 372 z00d :- any of us at any time. Please note that freenode predominantly provides
+:tepper.freenode.net 372 z00d :- assistance via private message, and while we have a network channel the
+:tepper.freenode.net 372 z00d :- primary venue for support requests is via private message to a member
+:tepper.freenode.net 372 z00d :- of the volunteer staff team.
+:tepper.freenode.net 372 z00d :-
+:tepper.freenode.net 372 z00d :- From time to time, volunteer staff may send server-wide notices relating to
+:tepper.freenode.net 372 z00d :- the project, or the communities that we host. The majority of such notices
+:tepper.freenode.net 372 z00d :- will be sent as wallops, and you can '/mode <yournick> +w' to ensure that you
+:tepper.freenode.net 372 z00d :- do not miss them. Important messages relating to the freenode project, including
+:tepper.freenode.net 372 z00d :- notices of upcoming maintenance and other scheduled downtime will be issued as
+:tepper.freenode.net 372 z00d :- global notices.
+:tepper.freenode.net 372 z00d :-
+:tepper.freenode.net 372 z00d :- Representing an on-topic project? Don't forget to register, more information
+:tepper.freenode.net 372 z00d :- can be found on the https://freenode.net website under "Group Registration".
+:tepper.freenode.net 372 z00d :-
+:tepper.freenode.net 372 z00d :- Thank you also to our server sponsors for the sustained support in keeping the
+:tepper.freenode.net 372 z00d :- network going for close to two decades.
+:tepper.freenode.net 372 z00d :-
+:tepper.freenode.net 372 z00d :- Thank you to all of our attendees, sponsors, speakers, exhibitors, helpers,
+:tepper.freenode.net 372 z00d :- and everyone else who made this year's freenode #live conference amazing.
+:tepper.freenode.net 372 z00d :- https://freenode.net/news/live-2018
+:tepper.freenode.net 372 z00d :-
+:tepper.freenode.net 372 z00d :- Thank you for using freenode!
+:tepper.freenode.net 376 z00d :End of /MOTD command.
+:z00d MODE z00d :+i
+:freenode-connect!frigg@freenode/utility-bot/frigg NOTICE z00d :Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+:freenode-connect!frigg@freenode/utility-bot/frigg PRIVMSG z00d :VERSION
+whois z00d
+:tepper.freenode.net 311 z00d z00d ~z00d dsl2E6BD34F.fixip.t-online.hu * :z00d
+:tepper.freenode.net 312 z00d z00d tepper.freenode.net :US
+:tepper.freenode.net 378 z00d z00d :is connecting from *@dsl2E6BD34F.fixip.t-online.hu 46.107.211.79
+:tepper.freenode.net 317 z00d z00d 6 1555849241 :seconds idle, signon time
+:tepper.freenode.net 318 z00d z00d :End of /WHOIS list.
+join #junkfooders2
+:z00d!~z00d@dsl2E6BD34F.fixip.t-online.hu JOIN #junkfooders2
+:tepper.freenode.net MODE #junkfooders2 +ns
+:tepper.freenode.net 353 z00d @ #junkfooders2 :@z00d
+:tepper.freenode.net 366 z00d #junkfooders2 :End of /NAMES list.
+part #junkfooders2
+:z00d!~z00d@dsl2E6BD34F.fixip.t-online.hu PART #junkfooders2
+PING :tepper.freenode.net
+pong tepper.freenode.net
+:z0d!~z0d@unaffiliated/z0d PRIVMSG z00d :hi
+:z0d!~z0d@unaffiliated/z0d PRIVMSG #topelite :hello
