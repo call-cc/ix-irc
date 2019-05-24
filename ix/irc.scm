@@ -79,6 +79,7 @@
                          (event:motd-end event:motd-end)
                          (event:nick-taken event:nick-taken)
                          (irc-nick irc-nick)
+                         (irc-join irc-join)
                          (main-loop irc-main-loop))))
 
 (define (irc-init irc message)
@@ -205,8 +206,8 @@
    (lambda (channel)
      (let ((socket (irc-socket irc)))
        (if (pair? channel)
-           (format socket "JOIN ~a ~a~a" (car channel) (cdr channel) *irc-eol*)
-           (format socket "JOIN ~a~a" channel *irc-eol*))))
+           (<- (actor-id irc) 'irc-join (car channel) (cdr channel))
+           (<- (actor-id irc) 'irc-join channel))))
    (irc-channels irc))
   (let ((password (irc-nick-password irc))
         (cfg-nick (irc-nickname irc))
@@ -242,3 +243,9 @@
 
 (define-method (irc-nick (irc <irc>) message nick)
   (irc-nick irc nick))
+
+(define-method (irc-join (irc <irc>) message channel . key)
+  (let ((socket (irc-socket irc)))
+    (if (null? key)
+        (format socket "JOIN ~a~a" channel *irc-eol*)
+        (format socket "JOIN ~a ~a~a" channel (car key) *irc-eol*))))
