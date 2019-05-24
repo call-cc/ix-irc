@@ -78,6 +78,7 @@
                          (event:motd-start event:motd-start)
                          (event:motd-end event:motd-end)
                          (event:nick-taken event:nick-taken)
+                         (irc-raw irc-raw)
                          (irc-msg irc-msg)
                          (irc-nick irc-nick)
                          (irc-join irc-join)
@@ -202,8 +203,6 @@
 
 (define-method (event:motd-start (irc <irc>) message params))
 
-
-
 (define-method (event:motd-end (irc <irc>) message params)
   (for-each
    (lambda (channel)
@@ -234,6 +233,12 @@
 (define-method (event:join (irc <irc>) message params))
 
 (define-method (event:part (irc <irc>) message params))
+
+(define-method (irc-raw (irc <irc>) message line)
+  (if line
+      (display (string-append line
+                              *irc-eol*)
+               (irc-socket irc))))
 
 (define-method (irc-msg (irc <irc>) to text)
   (format (irc-socket irc)
