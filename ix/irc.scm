@@ -259,9 +259,10 @@
   (irc-nick irc nick))
 
 (define-method (irc-join (irc <irc>) message channel . key)
-  (let ((cmd (string-append "JOIN "
-                            channel
-                            (if (null? key)
-                                ""
-                                (string-append " " (car key))))))
+  (let* (ch-key (if (null? key)
+                    ""
+                    (string-append " " (car key)))
+         (cmd (string-append "JOIN "
+                             channel
+                             ch-key)))
     (<- (actor-id irc) 'irc-raw cmd)))
