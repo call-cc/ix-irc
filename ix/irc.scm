@@ -9,7 +9,6 @@
   #:use-module (ice-9 regex)
   #:use-module (srfi srfi-1)
   #:export (<irc>
-            *irc-eol*
             irc-username
             irc-nickname
             irc-ident
