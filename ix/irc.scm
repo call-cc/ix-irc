@@ -241,22 +241,28 @@
                (irc-socket irc))))
 
 (define-method (irc-msg (irc <irc>) to text)
-  (format (irc-socket irc)
-          "PRIVMSG ~a :~a~a" to text *irc-eol*))
+  (let ((cmd (string-append "PRIVMSG "
+                            to " "
+                            ":" text)))
+    (<- (actor-id irc) 'irc-raw cmd)))
 
 (define-method (irc-msg (irc <irc>) message to text)
   (irc-msg irc to text))
 
 (define-method (irc-nick (irc <irc>) nick)
   (slot-set! irc 'username nick)
-  (format (irc-socket irc)
-          "NICK ~a~a" nick *irc-eol*))
+  (let ((cmd (string-append "NICK "
+                            nick)))
+    (<- (actor-id irc) 'irc-raw cmd)))
 
 (define-method (irc-nick (irc <irc>) message nick)
   (irc-nick irc nick))
 
 (define-method (irc-join (irc <irc>) message channel . key)
-  (let ((socket (irc-socket irc)))
-    (if (null? key)
-        (format socket "JOIN ~a~a" channel *irc-eol*)
-        (format socket "JOIN ~a ~a~a" channel (car key) *irc-eol*))))
+  (let ((socket (irc-socket irc))
+        (cmd (string-append "JOIN "
+                            channel
+                            (if (null? key)
+                                ""
+                                (string-append " " (car key))))))
+    (<- (actor-id irc) 'irc-raw cmd)))
