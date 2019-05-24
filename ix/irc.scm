@@ -259,8 +259,7 @@
   (irc-nick irc nick))
 
 (define-method (irc-join (irc <irc>) message channel . key)
-  (let ((socket (irc-socket irc))
-        (cmd (string-append "JOIN "
+  (let ((cmd (string-append "JOIN "
                             channel
                             (if (null? key)
                                 ""
