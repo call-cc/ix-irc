@@ -5,3 +5,4 @@
  - add more unit tests
  - handle more IRC events
  - remove prints to STDOUT (this is a library after all!)
+ - parse-line and friends are still ugly, rewrite them
