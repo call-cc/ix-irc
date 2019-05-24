@@ -78,6 +78,7 @@
                          (event:motd-start event:motd-start)
                          (event:motd-end event:motd-end)
                          (event:nick-taken event:nick-taken)
+                         (irc-msg irc-msg)
                          (irc-nick irc-nick)
                          (irc-join irc-join)
                          (main-loop irc-main-loop))))
@@ -201,6 +202,8 @@
 
 (define-method (event:motd-start (irc <irc>) message params))
 
+
+
 (define-method (event:motd-end (irc <irc>) message params)
   (for-each
    (lambda (channel)
@@ -215,7 +218,7 @@
     (if (and (string? password)
              (string-ci=? nick
                           cfg-nick))
-        (irc-msg irc "NickServ" (string-append "IDENTIFY " password)))))
+        (<- (actor-id irc) 'irc-msg "NickServ" (string-append "IDENTIFY " password)))))
 
 (set! *random-state* (random-state-from-platform))
 
@@ -235,6 +238,9 @@
 (define-method (irc-msg (irc <irc>) to text)
   (format (irc-socket irc)
           "PRIVMSG ~a :~a~a" to text *irc-eol*))
+
+(define-method (irc-msg (irc <irc>) message to text)
+  (irc-msg irc to text))
 
 (define-method (irc-nick (irc <irc>) nick)
   (slot-set! irc 'username nick)
