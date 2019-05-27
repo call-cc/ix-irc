@@ -3,7 +3,6 @@
   #:use-module (8sync)
   #:use-module (8sync actors)
   #:use-module (ice-9 match)
-  #:use-module (ice-9 format)
   #:use-module (ice-9 receive)
   #:use-module (ice-9 rdelim)
   #:use-module (ice-9 regex)
@@ -84,17 +83,25 @@
                          (irc-join irc-join)
                          (main-loop irc-main-loop))))
 
+(define *irc-mode-invisible* "8")
+
+(define (get-user-cmd ident realname)
+  (string-append "USER "
+                 ident
+                 " "
+                 *irc-mode-invisible*
+                 " * :"
+                 realname))
+
 (define (irc-init irc message)
   (define socket
     (irc-socket-setup (irc-server irc)
                       (irc-port irc)))
   (set! (irc-socket irc) socket)
-  (format socket "USER ~a ~a ~a :~a~a"
-          (irc-ident irc)
-          "*" "*"
-          (irc-realname irc) *irc-eol*)
-  (<- (actor-id irc) 'irc-nick
-      (irc-username irc))
+  (let ((user-cmd (get-user-cmd (irc-ident irc)
+                                (irc-realname irc))))
+    (<- (actor-id irc) 'irc-raw user-cmd))
+  (<- (actor-id irc) 'irc-nick (irc-username irc))
   (<- (actor-id irc) 'main-loop))
 
 (define (irc-cleanup irc message)
