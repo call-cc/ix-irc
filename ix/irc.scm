@@ -20,6 +20,7 @@
             is-target-channel?
             is-target-user?
 
+            event:welcome
             event:ping
             event:pong
             event:join
@@ -72,6 +73,7 @@
                          (*init* irc-init)
                          (*cleanup* irc-cleanup)
                          (handle-line handle-line)
+                         (event:welcome event:welcome)
                          (event:ping event:ping)
                          (event:pong event:pong)
                          (event:join event:join)
@@ -179,7 +181,8 @@
 (define (is-target-user? target)
   (not (is-target-channel? target)))
 
-(define *irc-functions* '(("372" . event:motd)
+(define *irc-functions* '(("001" . event:welcome)
+                          ("372" . event:motd)
                           ("375" . event:motd-start)
                           ("376" . event:motd-end)
                           ("433" . event:nick-taken)
@@ -204,6 +207,8 @@
 (define-method (handle-line (irc <irc>) line)
   (display line)
   (newline))
+
+(define-method (event:welcome (irc <irc>) message params))
 
 (define-method (event:pong (irc <irc>) message params)
   (display (string-append "PONG" *irc-eol*)
