@@ -30,6 +30,7 @@
             event:motd-end
             event:nick-taken
             event:topic
+            event:mode
             event:quit
             irc-nick
             irc-msg))
@@ -80,6 +81,7 @@
                          (event:motd-end event:motd-end)
                          (event:nick-taken event:nick-taken)
                          (event:topic event:topic)
+                         (event:mode event:mode)
                          (event:quit event:quit)
                          (irc-raw irc-raw)
                          (irc-msg irc-msg)
@@ -184,6 +186,7 @@
                           ("PART" . event:part)
                           ("PRIVMSG" . event:privmsg)
                           ("TOPIC" . event:topic)
+                          ("MODE" . event:mode)
                           ("QUIT" . event:quit)))
 
 (define-method (dispatch-raw-line (irc <irc>) raw-line)
@@ -248,6 +251,8 @@
 (define-method (event:part (irc <irc>) message params))
 
 (define-method (event:topic (irc <irc>) message params))
+
+(define-method (event:mode (irc <irc>) message params))
 
 (define-method (event:quit (irc <irc>) message params))
 
