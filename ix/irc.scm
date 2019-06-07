@@ -29,6 +29,7 @@
             event:motd-start
             event:motd-end
             event:nick-taken
+            event:topic
             event:quit
             irc-nick
             irc-msg))
@@ -78,6 +79,7 @@
                          (event:motd-start event:motd-start)
                          (event:motd-end event:motd-end)
                          (event:nick-taken event:nick-taken)
+                         (event:topic event:topic)
                          (event:quit event:quit)
                          (irc-raw irc-raw)
                          (irc-msg irc-msg)
@@ -181,6 +183,7 @@
                           ("JOIN" . event:join)
                           ("PART" . event:part)
                           ("PRIVMSG" . event:privmsg)
+                          ("TOPIC" . event:topic)
                           ("QUIT" . event:quit)))
 
 (define-method (dispatch-raw-line (irc <irc>) raw-line)
@@ -243,6 +246,8 @@
 (define-method (event:join (irc <irc>) message params))
 
 (define-method (event:part (irc <irc>) message params))
+
+(define-method (event:topic (irc <irc>) message params))
 
 (define-method (event:quit (irc <irc>) message params))
 
