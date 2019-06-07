@@ -29,6 +29,7 @@
             event:motd-start
             event:motd-end
             event:nick-taken
+            event:quit
             irc-nick
             irc-msg))
 
@@ -77,6 +78,7 @@
                          (event:motd-start event:motd-start)
                          (event:motd-end event:motd-end)
                          (event:nick-taken event:nick-taken)
+                         (event:quit event:quit)
                          (irc-raw irc-raw)
                          (irc-msg irc-msg)
                          (irc-nick irc-nick)
@@ -178,7 +180,8 @@
                           ("PING" . event:pong)
                           ("JOIN" . event:join)
                           ("PART" . event:part)
-                          ("PRIVMSG" . event:privmsg)))
+                          ("PRIVMSG" . event:privmsg)
+                          ("QUIT" . event:quit)))
 
 (define-method (dispatch-raw-line (irc <irc>) raw-line)
   "Dispatch a raw line of input"
@@ -240,6 +243,8 @@
 (define-method (event:join (irc <irc>) message params))
 
 (define-method (event:part (irc <irc>) message params))
+
+(define-method (event:quit (irc <irc>) message params))
 
 (define-method (irc-raw (irc <irc>) message line)
   (if line
