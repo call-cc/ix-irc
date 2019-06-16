@@ -5,4 +5,6 @@
  - add more unit tests
  - handle more IRC events
  - remove prints to STDOUT (this is a library after all!)
+ - don't send long lines, break them into separate messages
+ - count lines properly (UTF-8, hostmask)
  - parse-line and friends are still ugly, rewrite them
